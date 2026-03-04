@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ParkingRequest;
 use App\Http\Requests\ParkingSpotRequest;
+use App\Http\Resources\ParkingSpotResource;
+use App\Http\Resources\ParkinResource;
 use App\Models\parking_spot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +33,7 @@ class ParkingSpotController extends Controller
 
         return response()->json([
                 'message' => 'Parking spot added with sucess!',
-                'data' => $parkingSpot
+                'data' => new ParkingSpotResource($parkingSpot)
             ],201);
     }
 
