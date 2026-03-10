@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TipoAdministracao;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Localizacao extends Model
 {
@@ -22,5 +23,9 @@ class Localizacao extends Model
         return[
             'tipo_administracao' => TipoAdministracao::class
         ];
+    }
+
+    public function sector():BelongsTo{
+        return $this->belongsTo(Sector::class, 'sector_id');
     }
 }
