@@ -14,7 +14,7 @@ class Veichles extends Model
 
     protected function casts()
     {
-        return[
+        return [
             'veichle_type' => VeichleType::class
         ];
     }

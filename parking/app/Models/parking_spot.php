@@ -13,9 +13,12 @@ class parking_spot extends Model
     protected $fillable = [
         'parking_id',
         'code',
+        'sequence',
+        'category',
         'type',
         'status'
     ];
+
 
     protected function casts()
     {
@@ -28,4 +31,7 @@ class parking_spot extends Model
     public function parking():BelongsTo{
         return $this->BelongsTo(Parking::class);
     }
+
+
+
 }

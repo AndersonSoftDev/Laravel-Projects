@@ -15,7 +15,6 @@ class ParkingSpotResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'code' => $this->code,
             'type' => $this->type,
             'status' => $this->status
         ];

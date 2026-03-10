@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('parking_id')
             ->constrained()
             ->onDelete('cascade');
-            $table->string('code');
+            $table->string('category');
+            $table->integer('sequence');
             $table->string('type');
             $table->string('status');
             $table->timestamps();
