@@ -7,4 +7,5 @@ enum MetodoPagamento: string
     case MPESA ='Mpesa';
     case EMOLA = 'Emola';
     case CARTAO= 'Cartao';
+    case CONTA = 'Conta';
 }

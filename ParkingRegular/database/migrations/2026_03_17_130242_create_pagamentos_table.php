@@ -18,6 +18,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->decimal('valor',8,2);
             $table->string('metodo_pagamento');
+            $table->foreignId('conta_id')->nullable();
             $table->timestamps();
         });
     }

@@ -11,7 +11,8 @@ class Pagamento extends Model
     protected $fillable = [
         'ticket_id',
         'valor',
-        'metodo_pagamento'
+        'metodo_pagamento',
+        'conta_id'
     ];
 
     protected function casts()
@@ -24,6 +25,10 @@ class Pagamento extends Model
     public function tickets():BelongsTo{
      return $this->belongsTo(Ticket::class, 'ticket_id');
 
+    }
+
+    public function conta():BelongsTo{
+        return $this->belongsTo(Conta::class, 'conta_id');
     }
 
 }

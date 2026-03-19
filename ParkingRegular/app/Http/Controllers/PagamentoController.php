@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\MetodoPagamento;
 use App\Enums\StatusTicket;
 use App\Enums\StatusVaga;
 use App\Http\Requests\PagamentoRequest;
+use App\Models\Conta;
 use App\Models\Pagamento;
 use App\Models\Tarifa;
 use App\Models\Ticket;
@@ -29,6 +31,10 @@ class PagamentoController extends Controller
             $vaga = $ticket->vaga;
             $vaga->status = StatusVaga::LIVRE;
             $vaga->save();
+
+            if ($data['metodo_pagamento'] == MetodoPagamento::CONTA->value) {
+                $this->reduceAccountBalance($data['conta_id'], $data['valor']);
+            }
 
             return response()->json([
                 'message' => 'Pagamento efectuado com sucesso!',
@@ -63,5 +69,16 @@ class PagamentoController extends Controller
             'valor_pago' => $valor,
             'conforme' => $valor == $valorCalculado
         ];
+    }
+
+    public function reduceAccountBalance($conta, $valor)
+    {
+        $conta = Conta::findOrFail($conta);
+        if ($conta->saldo >= $valor) {
+            $conta->saldo -= $valor;
+            $conta->save();
+        } else {
+            throw new \Exception('O saldo da conta é insuficiente para efectuar esta operação!');
+        }
     }
 }

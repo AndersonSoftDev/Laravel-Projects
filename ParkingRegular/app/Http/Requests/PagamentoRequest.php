@@ -27,7 +27,8 @@ class PagamentoRequest extends FormRequest
         return [
             'ticket_id' => ['required', Rule::exists('tickets', 'id')],
             'valor' =>['required', 'numeric'],
-            'metodo_pagamento' =>['required', Rule::enum(MetodoPagamento::class)]
+            'metodo_pagamento' =>['required', Rule::enum(MetodoPagamento::class)],
+            'conta_id' => ['nullable', Rule::exists('contas', 'id')]
         ];
     }
 }
