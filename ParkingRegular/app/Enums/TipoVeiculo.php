@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-enum TipoVeiculo
+enum TipoVeiculo: string
 {
-    case CARRO;
-    case MOTO;
-    case CAMINHAO;
+    case CARRO = 'CARRO';
+    case MOTO = 'MOTO';
+    case CAMINHAO = 'CAMINHAO';
 }

@@ -23,34 +23,20 @@ class VeiculoController extends Controller
     public function store(VeiculoRequest $request)
     {
         $data = $request->validate();
-        $veiculo =Veiculo::create($data);
+        $veiculo = Veiculo::create($data);
         return response()->json([
-            'message' =>"Veiculo adicionado com sucesso",
+            'message' => "Veiculo adicionado com sucesso",
             'data' => $veiculo
-        ],201);
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    public function getByMatricula(string $matricula) {
+        $veiculo = Veiculo::where('matricula', $matricula)->firstOrFail();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return response()->json(
+            [
+                'data' => $veiculo
+            ],200
+        );
     }
 }

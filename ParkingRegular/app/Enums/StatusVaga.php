@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-enum StatusVaga
+enum StatusVaga:string
 {
-    case LIVRE;
-    case OCUPADO;
-    case MANUNTENCAO;
+    case LIVRE = 'LIVRE';
+    case OCUPADO = 'OCUPADO';
+    case MANUTENCAO = 'MANUTENCAO';
 }
