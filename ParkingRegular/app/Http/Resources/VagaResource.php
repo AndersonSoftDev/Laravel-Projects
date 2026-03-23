@@ -17,8 +17,8 @@ class VagaResource extends JsonResource
         return [
             'id' => $this->id,
             'codigo' => $this->codigo,
-            'tipo' => $this->tipo,
-            'status' => $this->status
+            'tipo' => $this->tipo->value,
+            'status' => $this->status->value
         ];
     }
 }

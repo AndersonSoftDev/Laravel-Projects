@@ -20,6 +20,7 @@ class BlocoResource extends JsonResource
             'id' => $this->id,
             'bloco' => $this->bloco,
             'disponibilidade' => $this->disponibilidade,
+            'total_vagas' => $this->total_vagas,
             'vagas' => VagaResource::collection($this->whenLoaded('vagas')),
 
         ];

@@ -34,7 +34,7 @@ class Vaga extends Model
         });
     }
 
-    public function blocos():BelongsTo{
+    public function bloco():BelongsTo{
         return $this->belongsTo(Bloco::class, 'bloco_id');
     }
 }

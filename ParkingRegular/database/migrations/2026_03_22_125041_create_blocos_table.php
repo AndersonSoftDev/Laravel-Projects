@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('bloco')->unique();
             $table->integer('andar')->unique();
-            $table->integer('vagas')->default(0);
+            $table->integer('total_vagas')->default(0);
             $table->string('disponibilidade');
             $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

@@ -11,7 +11,7 @@ class Bloco extends Model
     protected $fillable = [
         'bloco',
         'andar',
-        'vagas',
+        'total_vagas',
         'disponibilidade'
     ];
 
