@@ -29,8 +29,28 @@ class Vaga extends Model
 
     protected static function booted()
     {
-        static::creating(function($vaga){
-            $vaga->codigo = "VG-" . strtoupper(uniqid());
+        static::creating(function ($vaga) {
+            if(!empty($vaga->codigo)){
+                return;
+            }
+
+            if(!$vaga->bloco_id|| !$vaga->tipo){
+                throw new \Exception('Bloco e tipo de vaga são obrigatórios para a criação de códigos!');
+            }
+
+            $prefixoTipo = match ($vaga->tipo->value) {
+                'CARRO'=> 'CAR',
+                'MOTO'=>'MOT',
+                'CAMINHAO'=>'CAM'
+            };
+
+            $contador = self::where('bloco_id', $vaga->bloco_id)
+                ->where('tipo', $vaga->tipo)
+                ->count()+1;
+
+            $bloco = $vaga->bloco->first();
+
+            $vaga->codigo = $bloco->bloco . '-' . $prefixoTipo . '-' . str_pad($contador, 3, '0', STR_PAD_LEFT);
         });
     }
 
