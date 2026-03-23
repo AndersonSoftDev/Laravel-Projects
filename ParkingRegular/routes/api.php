@@ -18,5 +18,5 @@ Route::apiResource('ticket',TicketController::class);
 Route::apiResource('pagamento',PagamentoController::class);
 Route::apiResource('conta',ContaController::class);
 Route::get('veiculo/{matricula}', [VeiculoController::class, 'getByMatricula']);
-Route::get('vaga/{tipo}',[VagaController::class, 'getDisponibilidadeVagaPorTipo']);
+Route::get('vaga/total',[VagaController::class, 'totalVagas']);
 Route::apiResource('bloco', BlocoController::class);

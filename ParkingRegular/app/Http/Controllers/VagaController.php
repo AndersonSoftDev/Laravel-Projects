@@ -19,20 +19,17 @@ class VagaController extends Controller
         ], 201);
     }
 
-    public function getDisponibilidadeVagaPorTipo($tipo)
-    {
-        $quantidade = Vaga::where('tipo', $tipo)
-            ->where('status', StatusVaga::LIVRE)
-            ->count();
-
-        if ($quantidade === 0) {
-            return response()->json([
-                'message' => 'Não há vagas disponíveis'
-            ], 400);
-        }
+   public function totalVagas(){
+        $total_vagas = Vaga::count();
+        $total_livre = Vaga::where('status', 'LIVRE')->count();
+        $total_ocupadas = Vaga::where('status', 'OCUPADO')->count();
+        $total_manutencao = Vaga::where('status', 'MANUTENCAO')->count();
 
         return response()->json([
-            'disponiveis' => $quantidade
-        ], 200);
-    }
+            'total_vagas' => $total_vagas,
+            'total_livre' => $total_livre,
+            'total_ocupadas' => $total_ocupadas,
+            'total_manutencao' => $total_manutencao
+        ],200);
+   }
 }

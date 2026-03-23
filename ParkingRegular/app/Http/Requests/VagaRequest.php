@@ -26,7 +26,6 @@ class VagaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'codigo' => ['required', Rule::unique('vagas', 'id')],
             'tipo' =>['required', Rule::enum(TipoVeiculo::class)],
             'status' =>['required', Rule::enum(StatusVaga::class)],
             'bloco_id'=>['required', Rule::exists('blocos', 'id')]
