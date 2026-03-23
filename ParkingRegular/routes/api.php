@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlocoController;
 use App\Http\Controllers\ContaController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\TicketController;
@@ -18,3 +19,4 @@ Route::apiResource('pagamento',PagamentoController::class);
 Route::apiResource('conta',ContaController::class);
 Route::get('veiculo/{matricula}', [VeiculoController::class, 'getByMatricula']);
 Route::get('vaga/{tipo}',[VagaController::class, 'getDisponibilidadeVagaPorTipo']);
+Route::apiResource('bloco', BlocoController::class);

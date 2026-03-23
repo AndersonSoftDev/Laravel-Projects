@@ -3,12 +3,11 @@
 namespace App\Http\Requests;
 
 use App\Enums\StatusVaga;
-use App\Enums\TipoVeiculo;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class VagaRequest extends FormRequest
+class BlocoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +25,8 @@ class VagaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'codigo' => ['required', Rule::unique('vagas', 'id')],
-            'tipo' =>['required', Rule::enum(TipoVeiculo::class)],
-            'status' =>['required', Rule::enum(StatusVaga::class)],
-            'bloco_id'=>['required', Rule::exists('blocos', 'id')]
+            'andares' => ['required'],
+            'disponibilidade' =>['required', Rule::enum(StatusVaga::class)]
         ];
     }
 }

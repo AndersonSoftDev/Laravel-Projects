@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\StatusVaga;
 use App\Enums\TipoVeiculo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vaga extends Model
@@ -12,7 +13,8 @@ class Vaga extends Model
     protected $fillable = [
         'codigo',
         'tipo',
-        'status'
+        'status',
+        'bloco_id'
     ];
 
 
@@ -30,5 +32,9 @@ class Vaga extends Model
         static::creating(function($vaga){
             $vaga->codigo = "VG-" . strtoupper(uniqid());
         });
+    }
+
+    public function blocos():BelongsTo{
+        return $this->belongsTo(Bloco::class, 'bloco_id');
     }
 }

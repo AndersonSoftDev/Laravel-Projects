@@ -11,22 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vagas', function (Blueprint $table) {
+        Schema::create('blocos', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo')->unique();
-            $table->string('tipo');
-            $table->string('status');
-            $table->foreignId('bloco_id')
-            ->constrained()->onDelete('cascade');
+            $table->string('bloco')->unique();
+            $table->integer('andar')->unique();
+            $table->integer('vagas')->default(0);
+            $table->string('disponibilidade');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('vagas');
+        Schema::dropIfExists('blocos');
     }
 };
