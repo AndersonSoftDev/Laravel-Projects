@@ -58,7 +58,12 @@ class TicketController extends Controller
         if($veiculo->tipo !== $vaga->tipo){
             throw new \Exception("O tipo de veiculo nao se encaixa na vaga em questao");
         }
+    }
 
+    public  function findByVagaId($vaga){
+        $ticket = Ticket::where('vaga_id', $vaga)
+            ->where('status', StatusTicket::ABERTO)->firstOrFail();
 
+        return response()->json($ticket);
     }
 }

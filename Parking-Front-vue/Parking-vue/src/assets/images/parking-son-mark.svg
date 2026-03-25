@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" role="img" aria-labelledby="parkingSonMarkTitle">
+  <title id="parkingSonMarkTitle">Parking-son</title>
+  <defs>
+    <linearGradient id="markBlue" x1="0%" x2="100%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#173F7A"/>
+      <stop offset="100%" stop-color="#2C9BD4"/>
+    </linearGradient>
+    <linearGradient id="markOrange" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2A13A"/>
+      <stop offset="100%" stop-color="#EA7B1F"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="68" cy="68" r="57" fill="none" stroke="url(#markBlue)" stroke-width="10"/>
+  <path d="M24 31C35 16 52 9 72 9c8 0 16 1 24 4" fill="none" stroke="url(#markOrange)" stroke-linecap="round" stroke-width="8"/>
+  <path d="M31 58h75" fill="none" stroke="#1B5C90" stroke-linecap="round" stroke-width="4"/>
+  <path d="M37 58l15-14 17 10 17-16 13 20" fill="none" stroke="#1B5C90" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M77 18h24v14h-8v-6h-8v6h-8z" fill="#2C9BD4"/>
+  <path d="M59 36v52" fill="none" stroke="#1B5C90" stroke-width="4"/>
+  <path d="M59 38c24 0 36 12 36 31 0 14-8 24-22 28l17 24-13 9-23-34V38z" fill="url(#markBlue)"/>
+  <path d="M58 38v86l13-18h18c16 0 29-12 29-29S105 48 88 48H58z" fill="none" stroke="url(#markOrange)" stroke-linejoin="round" stroke-width="5"/>
+  <path d="M52 108h42l10 13H43z" fill="none" stroke="#3F7FA2" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M78 112h13c4 0 7 3 7 7v2H70v-2c0-4 4-7 8-7z" fill="#2C9BD4"/>
+  <circle cx="77" cy="122" r="3" fill="#1B5C90"/>
+  <circle cx="94" cy="122" r="3" fill="#1B5C90"/>
+</svg>

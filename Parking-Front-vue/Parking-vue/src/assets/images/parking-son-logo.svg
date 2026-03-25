@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 250" role="img" aria-labelledby="parkingSonLogoTitle parkingSonLogoDesc">
+  <title id="parkingSonLogoTitle">Parking-son</title>
+  <desc id="parkingSonLogoDesc">Logotipo Parking-son com simbolo acima e wordmark abaixo.</desc>
+  <defs>
+    <linearGradient id="parkingSonBlue" x1="0%" x2="100%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#173F7A"/>
+      <stop offset="100%" stop-color="#2C9BD4"/>
+    </linearGradient>
+    <linearGradient id="parkingSonOrange" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2A13A"/>
+      <stop offset="100%" stop-color="#EA7B1F"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(152 10)">
+    <circle cx="68" cy="68" r="57" fill="none" stroke="url(#parkingSonBlue)" stroke-width="10"/>
+    <path d="M24 30C35 15 52 8 72 8c8 0 16 1 24 4" fill="none" stroke="url(#parkingSonOrange)" stroke-linecap="round" stroke-width="8"/>
+    <path d="M30 58h75" fill="none" stroke="#1B5C90" stroke-linecap="round" stroke-width="4"/>
+    <path d="M36 58l16-15 17 10 17-16 13 21" fill="none" stroke="#1B5C90" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <path d="M76 18h24v14h-8v-6h-8v6h-8z" fill="#2C9BD4"/>
+    <path d="M59 36v52" fill="none" stroke="#1B5C90" stroke-width="4"/>
+    <path d="M59 38c24 0 36 12 36 31 0 14-8 24-22 28l17 24-13 9-23-34V38z" fill="url(#parkingSonBlue)"/>
+    <path d="M58 38v86l13-18h18c16 0 29-12 29-29S105 48 88 48H58z" fill="none" stroke="url(#parkingSonOrange)" stroke-linejoin="round" stroke-width="5"/>
+    <path d="M52 108h42l10 13H43z" fill="none" stroke="#3F7FA2" stroke-linejoin="round" stroke-width="4"/>
+    <path d="M78 112h13c4 0 7 3 7 7v2H70v-2c0-4 4-7 8-7z" fill="#2C9BD4"/>
+    <circle cx="77" cy="122" r="3" fill="#1B5C90"/>
+    <circle cx="94" cy="122" r="3" fill="#1B5C90"/>
+  </g>
+
+  <text x="220" y="202" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800">
+    <tspan fill="#173F7A">Parking-</tspan><tspan fill="#EA7B1F">son</tspan>
+  </text>
+</svg>

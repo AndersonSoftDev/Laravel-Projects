@@ -14,9 +14,22 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 })->middleware('auth:sanctum'); */
 
+///Rotas do ticket
 Route::apiResource('ticket',TicketController::class);
+Route::get('ticket/vaga/{id}', [TicketController::class, 'findByVagaId']);
+
+///Rotas do pagamento
 Route::apiResource('pagamento',PagamentoController::class);
+
+///Rotas da conta
 Route::apiResource('conta',ContaController::class);
+
+///Rotas do veiculo
 Route::get('veiculo/{matricula}', [VeiculoController::class, 'getByMatricula']);
+
+///Rotas da vaga
 Route::get('vaga/total',[VagaController::class, 'totalVagas']);
+
+///Rotas do bloco
 Route::apiResource('bloco', BlocoController::class);
+
