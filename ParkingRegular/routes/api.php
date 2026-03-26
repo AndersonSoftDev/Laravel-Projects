@@ -6,8 +6,6 @@ use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\VeiculoController;
-use App\Models\Ticket;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /* Route::get('/user', function (Request $request) {
@@ -25,10 +23,13 @@ Route::apiResource('pagamento',PagamentoController::class);
 Route::apiResource('conta',ContaController::class);
 
 ///Rotas do veiculo
-Route::get('veiculo/{matricula}', [VeiculoController::class, 'getByMatricula']);
+Route::apiResource('veiculo', VeiculoController::class);
+Route::get('veiculo/matricula/{matricula}', [VeiculoController::class, 'getByMatricula']);
 
 ///Rotas da vaga
 Route::get('vaga/total',[VagaController::class, 'totalVagas']);
+Route::get('vaga/sugeridas/{tipo}', [VagaController::class, 'getSugestaoVagas']);
+Route::get('vaga/disponiveis', [VagaController::class, 'getVagasFiltradas']);
 
 ///Rotas do bloco
 Route::apiResource('bloco', BlocoController::class);

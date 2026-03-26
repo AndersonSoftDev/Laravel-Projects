@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class VeiculoRequest extends FormRequest
+class FiltroVagaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,9 @@ class VeiculoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'matricula' => ['required',  Rule::unique("veiculos", "matricula")],
+            'bloco_id' => ['nullable', Rule::exists('blocos', 'id')],
             'tipo' => ['required', Rule::enum(TipoVeiculo::class)],
-            'cor' => 'required'
-
+            'limit' =>['nullable', 'integer', 'min:1']
         ];
     }
 }

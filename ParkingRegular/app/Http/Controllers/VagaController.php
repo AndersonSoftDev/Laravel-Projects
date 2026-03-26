@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\StatusVaga;
+use App\Enums\TipoVeiculo;
+use App\Http\Requests\FiltroVagaRequest;
 use App\Http\Requests\VagaRequest;
 use App\Models\Vaga;
 use Illuminate\Http\Request;
@@ -19,7 +21,8 @@ class VagaController extends Controller
         ], 201);
     }
 
-   public function totalVagas(){
+    public function totalVagas()
+    {
         $total_vagas = Vaga::count();
         $total_livre = Vaga::where('status', 'LIVRE')->count();
         $total_ocupadas = Vaga::where('status', 'OCUPADO')->count();
@@ -30,6 +33,35 @@ class VagaController extends Controller
             'total_livre' => $total_livre,
             'total_ocupadas' => $total_ocupadas,
             'total_manutencao' => $total_manutencao
-        ],200);
-   }
+        ], 200);
+    }
+
+    public function getSugestaoVagas($tipoVeiculo)
+    {
+
+        return Vaga::query()
+            ->where('status', StatusVaga::LIVRE)
+            ->where('tipo', $tipoVeiculo)
+            ->orderBy('bloco_id', 'asc')
+            ->orderBy('codigo', 'asc')
+            ->limit(5)->get();
+    }
+
+    public function getVagasFiltradas(FiltroVagaRequest $filtro)
+    {
+        $query = Vaga::query()->where('status', StatusVaga::LIVRE)
+            ->where('tipo', $filtro['tipo']);
+
+        if (!empty($filtro['bloco_id'])) {
+            $query->where('bloco_id', $filtro['bloco_id']);
+        }
+
+        if (!empty($filtro['limit'])) {
+            $query->limit($filtro['limit']);
+        } else {
+            $query->limit($filtro[10]);
+        }
+
+        return $query->orderBy('codigo', 'asc')->get();
+    }
 }

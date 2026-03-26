@@ -66,4 +66,9 @@ class TicketController extends Controller
 
         return response()->json($ticket);
     }
+
+    public function getTicketAbertoPorMatricula($matricula){
+        $matricula = Veiculo::findOrFail('matricula');
+        return null;    
+    }
 }

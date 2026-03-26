@@ -22,7 +22,7 @@ class VeiculoController extends Controller
      */
     public function store(VeiculoRequest $request)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $veiculo = Veiculo::create($data);
         return response()->json([
             'message' => "Veiculo adicionado com sucesso",
