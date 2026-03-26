@@ -27,7 +27,7 @@ class PagamentoController extends Controller
             $ticket = Ticket::findOrFail($data['ticket_id']);
             $ticket->status = StatusTicket::FECHADO;
             $ticket->saida = Carbon::now();
-            $ticket->valor = $data['valor'];
+            $ticket->valor_pago = $data['valor'];
             $ticket->save();
 
             $vaga = $ticket->vaga;

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 ///Rotas do ticket
 Route::apiResource('ticket',TicketController::class);
 Route::get('ticket/vaga/{id}', [TicketController::class, 'findByVagaId']);
+Route::get('ticket/veiculo/{veiculo_id}', [TicketController::class, 'getTicketAbertoPorMatricula']);
 
 ///Rotas do pagamento
 Route::apiResource('pagamento',PagamentoController::class);

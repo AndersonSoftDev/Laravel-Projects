@@ -67,8 +67,14 @@ class TicketController extends Controller
         return response()->json($ticket);
     }
 
-    public function getTicketAbertoPorMatricula($matricula){
-        $matricula = Veiculo::findOrFail('matricula');
-        return null;    
+    public function getTicketAbertoPorMatricula($veiculo_id){
+        $ticket = Ticket::where('veiculo_id', $veiculo_id)
+        ->where('status', StatusTicket::ABERTO)
+        ->firstOrFail();
+
+        if(!$ticket){
+            return response()->json(['message'=> "Ticket não encontrado para o veículo em questão"],404);
+        }
+        return $ticket;
     }
 }
