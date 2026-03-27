@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContaRequest;
+use App\Models\Conta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,5 +29,14 @@ class ContaController extends Controller
 
             return response()->json(['message' => 'Conta criada com sucesso', 'data' => $conta], 201);
         });
+    }
+
+    public function buscar(Request $request){
+        $termo = $request->input('data');
+
+        $contas = Conta::with('user')
+        ->pesquisa($termo)->get();
+
+        return response()->json($contas);
     }
 }

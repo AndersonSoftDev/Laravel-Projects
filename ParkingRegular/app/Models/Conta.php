@@ -11,6 +11,7 @@ class Conta extends Model
         'user_id',
         'numero_conta',
         'saldo',
+        'contacto',
         'activo'
     ];
 
@@ -18,15 +19,15 @@ class Conta extends Model
     {
         static::creating(function ($conta) {
 
-            if (!empty($conta->codigo)) {
+            if (!empty($conta->numero_conta)) {
                 return;
             }
 
             do {
-                $codigo = 'ACC-' . random_int(10000, 99999);
-            } while (self::where('codigo', $codigo)->exists());
+                $numero_conta = 'ACC-' . random_int(10000, 99999);
+            } while (self::where('numero_conta', $numero_conta)->exists());
 
-            $conta->codigo = $codigo;
+            $conta->numero_conta = $numero_conta;
         });
     }
 
@@ -35,5 +36,12 @@ class Conta extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopePesquisa($query, $termo){
+        return $query->where('numero_conta', 'LIKE', "%{$termo}%")
+        ->orWhereHas('user', function($data) use ($termo){
+            $data->where('name', 'LIKE', "%{$termo}%")
+            ->orWhere('email', 'LIKE', "%{$termo}%");
+        });
+    }
 
 }

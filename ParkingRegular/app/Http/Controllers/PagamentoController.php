@@ -47,6 +47,23 @@ class PagamentoController extends Controller
 
     private function verifyPaymentConformity($ticket_id, $valor)
     {
+        $data = $this->calculateEstimateValue($ticket_id);
+
+        $valorCalculado = $data['Valor_calculado'];
+
+        if ($valorCalculado != $valor) {
+            throw new \Exception("O valor pago nao corresponde ao valor por pagar de " . $valorCalculado . "Mzn");
+        }
+
+        return [
+            'valor_calculado' => $valorCalculado,
+            'valor_pago' => $valor,
+            'conforme' => $valor == $valorCalculado
+        ];
+    }
+
+    public function calculateEstimateValue($ticket_id)
+    {
         $ticket = Ticket::findOrFail($ticket_id);
 
         $entrada = Carbon::parse($ticket->entrada);
@@ -62,16 +79,13 @@ class PagamentoController extends Controller
 
         $valorCalculado = $duracaoHoras * $tarifa;
 
-        if ($valorCalculado != $valor) {
-            throw new \Exception("O valor pago nao corresponde ao valor por pagar de " . $valorCalculado . "Mzn");
-        }
-
         return [
-            'valor_calculado' => $valorCalculado,
-            'valor_pago' => $valor,
-            'conforme' => $valor == $valorCalculado
+            'Valor_calculado' => $valorCalculado ,
+            'tempo_estimado' => $duracaoHoras ,
+            'tarifa_aplicada' => $tarifa
         ];
     }
+
 
     public function reduceAccountBalance($conta, $valor)
     {

@@ -19,8 +19,10 @@ Route::get('ticket/veiculo/{veiculo_id}', [TicketController::class, 'getTicketAb
 
 ///Rotas do pagamento
 Route::apiResource('pagamento',PagamentoController::class);
+Route::get('pagamento/calcular/{ticket_id}',[PagamentoController::class, 'calculateEstimateValue']);
 
 ///Rotas da conta
+Route::get('conta/buscar', [ContaController::class, 'buscar']);
 Route::apiResource('conta',ContaController::class);
 
 ///Rotas do veiculo

@@ -18,6 +18,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->string('numero_conta')->unique();
             $table->float('saldo');
+            $table->string('contacto')->nullable();
             $table->boolean('activo');
             $table->timestamps();
         });
