@@ -42,7 +42,17 @@ class BlocoController extends Controller
 
     public  function index()
     {
-        $bloco = Bloco::with('vagas')->get();
+        $bloco = Bloco::with([
+        'vagas' => function ($query) {
+            $query->orderByRaw("
+                CASE tipo
+                    WHEN 'CARRO' THEN 1
+                    WHEN 'MOTO' THEN 2
+                    WHEN 'CAMINHAO' THEN 3
+                END
+            ")->orderBy('codigo');
+        }
+    ])->get();
 
         return BlocoResource::collection($bloco);
     }

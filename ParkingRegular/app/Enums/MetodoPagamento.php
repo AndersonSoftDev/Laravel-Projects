@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum MetodoPagamento: string
 {
-    case MPESA ='Mpesa';
-    case EMOLA = 'Emola';
-    case CARTAO= 'Cartao';
-    case CONTA = 'Conta';
+    case MPESA ='MPESA';
+    case EMOLA = 'EMOLA';
+    case CARTAO= 'CARTAO';
+    case CONTA = 'CONTA';
 }

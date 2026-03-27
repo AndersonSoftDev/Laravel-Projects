@@ -33,6 +33,7 @@ Route::get('veiculo/matricula/{matricula}', [VeiculoController::class, 'getByMat
 Route::get('vaga/total',[VagaController::class, 'totalVagas']);
 Route::get('vaga/sugeridas/{tipo}', [VagaController::class, 'getSugestaoVagas']);
 Route::get('vaga/disponiveis', [VagaController::class, 'getVagasFiltradas']);
+Route::apiResource('vaga', VagaController::class);
 
 ///Rotas do bloco
 Route::apiResource('bloco', BlocoController::class);
